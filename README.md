@@ -1,7 +1,7 @@
 # Spring Boot Transactional
 
 ---
-## 1. Basic Transaction case
+## 1. Transaction basic case
 
 ### Save User Success
 ```bash
@@ -23,7 +23,7 @@
 ```
 ---
 
-## 2. ReadOnly Transaction case
+## 2. Transaction ReadOnly case
 
 ### Attempt WriteInReadOnly
 ```bash
@@ -37,3 +37,13 @@
   curl http://localhost:8080/api/users/readonly
 ```
 ---
+
+## Transaction Propagation case
+
+### Propagation Type - REQUIRED
+Joins existing transaction (default)
+```bash
+   curl -X POST http://localhost:8080/api/tx/required \
+      -H "Content-Type: application/json" \
+      -d '{"username":"Alice"}'
+```
