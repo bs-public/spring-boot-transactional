@@ -1,7 +1,7 @@
 # Spring Boot Transactional
 
 ---
-## Basic Transaction case
+## 1. Basic Transaction case
 
 ### Save User Success
 ```bash
@@ -23,7 +23,7 @@
 ```
 ---
 
-## ReadOnly Transaction case
+## 2. ReadOnly Transaction case
 
 ### Attempt WriteInReadOnly
 ```bash
