@@ -41,7 +41,10 @@
 ## Transaction Propagation case
 
 ### Propagation Type - REQUIRED
-Joins existing transaction (default)
+- Joins existing transaction (default)
+- Both outer and inner run in same transaction.
+- Exception in outer rolls back both.
+
 ```bash
    curl -X POST http://localhost:8080/api/tx/required \
       -H "Content-Type: application/json" \
@@ -49,7 +52,10 @@ Joins existing transaction (default)
 ```
 
 ### Propagation Type - REQUIRES_NEW
-Suspends existing and starts new transaction 
+- Suspends existing and starts new transaction
+- Inner runs in a separate transaction. 
+- Exception in outer only rolls back outer, inner remains.
+
 ```bash
    curl -X POST http://localhost:8080/api/tx/requires-new \
       -H "Content-Type: application/json" \
