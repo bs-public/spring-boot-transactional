@@ -22,4 +22,14 @@ public class InnerUserService {
     userRepository.save(user);
     System.out.println("Inner: Saved in REQUIRED");
   }
+
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  public void saveInNewTransaction(String name) {
+    Users user = new Users();
+    user.setName(name);
+    userRepository.save(user);
+    System.out.println("Inner: Saved in REQUIRES_NEW");
+    // Uncomment below to test rollback behavior
+    // throw new RuntimeException("Inner failed");
+  }
 }

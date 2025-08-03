@@ -22,4 +22,10 @@ public class TxPropagationController {
     outerUserService.outerMethodWithRequiredInner(request.getUsername());
     return "Called REQUIRED";
   }
+
+  @PostMapping("/requires-new")
+  public String callRequiresNew(@RequestBody UserRequest request) {
+    outerUserService.outerMethodWithNewInner(request.getUsername());
+    return "Called REQUIRES_NEW";
+  }
 }

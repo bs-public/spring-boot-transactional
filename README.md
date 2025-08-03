@@ -47,3 +47,11 @@ Joins existing transaction (default)
       -H "Content-Type: application/json" \
       -d '{"username":"Alice"}'
 ```
+
+### Propagation Type - REQUIRES_NEW
+Suspends existing and starts new transaction 
+```bash
+   curl -X POST http://localhost:8080/api/tx/requires-new \
+      -H "Content-Type: application/json" \
+      -d '{"username":"Alice"}'
+```

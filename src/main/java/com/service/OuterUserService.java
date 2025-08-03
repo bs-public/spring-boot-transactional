@@ -22,4 +22,15 @@ public class OuterUserService {
       throw new RuntimeException("Outer failed after inner");
     }
   }
+
+  @Transactional
+  public void outerMethodWithNewInner(String userName) {
+    System.out.println("Outer: Start");
+
+    innerUserService.saveInNewTransaction(userName);
+
+    if (true) {
+      throw new RuntimeException("Outer failed after inner");
+    }
+  }
 }
