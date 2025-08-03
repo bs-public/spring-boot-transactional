@@ -33,4 +33,16 @@ public class UserService {
     userRepository.save(user);
     throw new RuntimeException("Simulated exception"); // rollback
   }
+
+  @Transactional(readOnly = true)
+  public List<Users> getAllUsersReadOnly() {
+    return userRepository.findAll();
+  }
+
+  @Transactional(readOnly = true)
+  public void attemptWriteInReadOnlyTransaction(String username) {
+    Users user = new Users();
+    user.setName(username);
+    userRepository.save(user); // Will fail in some DBs, no-op in others
+  }
 }
