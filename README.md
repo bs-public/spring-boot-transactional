@@ -73,3 +73,14 @@
       -H "Content-Type: application/json" \
       -d '{"username":"Alice"}'
 ```
+
+### Propagation Type - NOT_SUPPORTED
+- Suspends the existing transaction (if any)
+- Inner method runs outside transaction, changes commit immediately
+- If outer fails, inner still persists its changes
+
+```bash
+   curl -X POST http://localhost:8080/api/tx/not-supported \
+      -H "Content-Type: application/json" \
+      -d '{"username":"Alice"}'
+```

@@ -56,4 +56,14 @@ public class OuterUserService {
 
     System.out.println("Outer: Completed");
   }
+
+  @Transactional
+  public void outerMethodWithNotSupported(String username) {
+    System.out.println("Outer: Transaction started");
+
+    innerUserService.saveOutsideTransaction(username);
+
+    // Outer will fail
+    throw new RuntimeException("Outer failed");
+  }
 }

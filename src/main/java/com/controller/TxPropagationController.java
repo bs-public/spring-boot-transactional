@@ -34,4 +34,10 @@ public class TxPropagationController {
     outerUserService.outerMethodWithNestedInner(request.getUsername());
     return "Called NESTED";
   }
+
+  @PostMapping("/not-supported")
+  public String callNotSupported(@RequestBody UserRequest request) {
+    outerUserService.outerMethodWithNotSupported(request.getUsername());
+    return "Called NOT_SUPPORTED";
+  }
 }

@@ -43,4 +43,13 @@ public class InnerUserService {
     // Simulate failure inside nested block
     throw new RuntimeException("Nested transaction failed");
   }
+
+  @Transactional(propagation = Propagation.NOT_SUPPORTED)
+  public void saveOutsideTransaction(String name) {
+    Users user = new Users();
+    user.setName(name + "_not_supported");
+    userRepository.save(user);
+
+    System.out.println("Inner (NOT_SUPPORTED): Committed independently");
+  }
 }
