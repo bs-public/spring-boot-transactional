@@ -61,3 +61,15 @@
       -H "Content-Type: application/json" \
       -d '{"username":"Alice"}'
 ```
+
+### Propagation Type - NESTED
+- Executes within the current transaction using a savepoint
+- If an exception occurs in the nested method:
+  - Spring automatically rolls back to the savepoint
+  - Outer transaction continues, if exception is caught
+
+```bash
+   curl -X POST http://localhost:8080/api/tx/nested \
+      -H "Content-Type: application/json" \
+      -d '{"username":"Alice"}'
+```

@@ -28,4 +28,10 @@ public class TxPropagationController {
     outerUserService.outerMethodWithNewInner(request.getUsername());
     return "Called REQUIRES_NEW";
   }
+
+  @PostMapping("/nested")
+  public String callNested(@RequestBody UserRequest request) {
+    outerUserService.outerMethodWithNestedInner(request.getUsername());
+    return "Called NESTED";
+  }
 }

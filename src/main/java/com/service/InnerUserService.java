@@ -32,4 +32,15 @@ public class InnerUserService {
     // Uncomment below to test rollback behavior
     // throw new RuntimeException("Inner failed");
   }
+
+  @Transactional(propagation = Propagation.NESTED)
+  public void saveInNestedTransaction(String name) {
+    Users user = new Users();
+    user.setName(name);
+    userRepository.save(user);
+    System.out.println("Inner (NESTED): Saved");
+
+    // Simulate failure inside nested block
+    throw new RuntimeException("Nested transaction failed");
+  }
 }
